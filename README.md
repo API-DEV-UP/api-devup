@@ -5,7 +5,7 @@
 
 API-DEVUP is a powerful [Node.js](https://nodejs.org) librarys is intended for interaction with the service [DEV-UP.RU](https://dev-up.ru) 🚀
 
-| 📖 [Documentation](https://www.npmjs.com/package/api-devup) | 🤖 [Author](https://vk.com/zeuvs) |
+| 📖 [API Documentation](https://dev-up.ru/dev) | 🤖 [Author](https://vk.com/zeuvs) |
 | ----------------------------------------------------------- | --------------------------------- |
 
 ## Features

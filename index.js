@@ -12,7 +12,12 @@ class Auth {
         getGroups: "https://api.dev-up.ru/method/vk.getGroups",
         getApps: "https://api.dev-up.ru/method/vk.getApps",
         getStickers: "https://api.dev-up.ru/method/vk.getStickers",
-        shortLink: "https://api.dev-up.ru/method/utils.getShortLink",
+        getStickerInfo: "https://api.dev-up.ru/method/vk.getStickerInfo",
+        md5: "https://api.dev-up.ru/method/utils.md5Generate",
+        getServerTime: "https://api.dev-up.ru/method/utils.getServerTime",
+        createShortLink: "https://api.dev-up.ru/method/utils.createShortLink",
+        setNotificationsLinks:
+          "https://api.dev-up.ru/method/utils.notificationsLinks",
         speech: "https://api.dev-up.ru/method/audio.speech",
         profile: "https://api.dev-up.ru/method/profile.get",
       },
@@ -34,18 +39,60 @@ class Auth {
     }
     return this.res.response;
   }
-  async shortLink(params) {
-    if (params && !params.url) {
-      return {
-        err: `The "url" parameter was not passed in the request. This parameter can be passed as follows: { url: "link to audio" }, set the correct order of parameters and try again!`,
-      };
-    }
-    const res = await fetch(this.settings.url.shortLink, {
+  async md5(params) {
+    const res = await fetch(this.settings.url.md5, {
       method: this.settings.method,
       credentials: this.settings.credentials,
       body: JSON.stringify({
         key: this.settings.auth.key,
         ...params,
+      }),
+      headers: this.settings.headers,
+    });
+    this.res = await res.json();
+    if (this.res.err) {
+      return this.res;
+    }
+    return this.res.response;
+  }
+  async setNotificationsLinks(params) {
+    const res = await fetch(this.settings.url.setNotificationsLinks, {
+      method: this.settings.method,
+      credentials: this.settings.credentials,
+      body: JSON.stringify({
+        key: this.settings.auth.key,
+        ...params,
+      }),
+      headers: this.settings.headers,
+    });
+    this.res = await res.json();
+    if (this.res.err) {
+      return this.res;
+    }
+    return this.res.response;
+  }
+  async createShortLink(params) {
+    const res = await fetch(this.settings.url.createShortLink, {
+      method: this.settings.method,
+      credentials: this.settings.credentials,
+      body: JSON.stringify({
+        key: this.settings.auth.key,
+        ...params,
+      }),
+      headers: this.settings.headers,
+    });
+    this.res = await res.json();
+    if (this.res.err) {
+      return this.res;
+    }
+    return this.res.response;
+  }
+  async getServerTime(params) {
+    const res = await fetch(this.settings.url.getServerTime, {
+      method: this.settings.method,
+      credentials: this.settings.credentials,
+      body: JSON.stringify({
+        key: this.settings.auth.key,
       }),
       headers: this.settings.headers,
     });
@@ -143,6 +190,28 @@ class Auth {
       };
     }
     const res = await fetch(this.settings.url.getStickers, {
+      method: this.settings.method,
+      credentials: this.settings.credentials,
+      body: JSON.stringify({
+        key: this.settings.auth.key,
+        ...params,
+      }),
+      headers: this.settings.headers,
+    });
+    this.res = await res.json();
+    if (this.res.err) {
+      return this.res;
+    }
+    return this.res.response;
+  }
+  async getStickerInfo(params) {
+    if (!params.sticker_id) {
+      return {
+        err:
+          'The key parameter was not passed. Example {"sticker_id": Number }!',
+      };
+    }
+    const res = await fetch(this.settings.url.getStickerInfo, {
       method: this.settings.method,
       credentials: this.settings.credentials,
       body: JSON.stringify({
