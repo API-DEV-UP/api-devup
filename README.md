@@ -6,7 +6,7 @@
 API-DEVUP is a powerful [Node.js](https://nodejs.org) librarys is intended for interaction with the service [DEV-UP.RU](https://dev-up.ru) 🚀
 
 | 📖 [API Documentation](https://dev-up.ru/dev) | 🤖 [Author](https://vk.com/zeuvs) |
-| ----------------------------------------------------------- | --------------------------------- |
+| --------------------------------------------- | --------------------------------- |
 
 ## Features
 
@@ -41,3 +41,18 @@ async function run() {
 
 run().catch(console.log);
 ```
+
+### Library functions
+
+| Method               | Parameters         | Description                                     |
+| -------------------- | ------------------ | ----------------------------------------------- |
+| getStickers          | user_id: Number    | Retrieves a list of the user's stickers         |
+| getStickerInfo       | sticker_id: Number | Gets information about the sticker and the pack |
+| getGroups            | user_id: Number    | Retrieves the list of user groups               |
+| getApps              | user_id: Number    | Retrieves the list of the user's applications   |
+| getProfile           |                    | Retrieves profile information                   |
+| audioSpeech          | url: String        | Convert audio to text                           |
+| md5                  | text: String       | Get the md5 hash from the text                  |
+| getServerTime        |                    | Current time on the server in unixtime (MSK).   |
+| createShortLink      | url: String        | Link Shortening                                 |
+| setNotificationsLink | code: String       | Managing notifications from links               |
