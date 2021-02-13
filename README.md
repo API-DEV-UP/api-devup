@@ -52,7 +52,5 @@ run().catch(console.log);
 | getApps              | user_id: Number    | Retrieves the list of the user's applications   |
 | getProfile           |                    | Retrieves profile information                   |
 | audioSpeech          | url: String        | Convert audio to text                           |
-| md5                  | text: String       | Get the md5 hash from the text                  |
-| getServerTime        |                    | Current time on the server in unixtime (MSK).   |
 | createShortLink      | url: String        | Link Shortening                                 |
 | setNotificationsLink | code: String       | Managing notifications from links               |

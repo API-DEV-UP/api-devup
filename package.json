@@ -1,7 +1,7 @@
 {
   "name": "api-devup",
-  "version": "1.2.0",
-  "description": "This library is intended for interaction with the service dev-up.ru",
+  "version": "1.2.1",
+  "description": "This library is intended for interaction with the service https://dev-up.ru",
   "main": "index.js",
   "dependencies": {
     "node-fetch": "^2.6.1" 
@@ -16,7 +16,7 @@
     "saveSpec": null,
     "fetchSpec": "latest"
   },
-  "_resolved": "https://registry.npmjs.org/a/-/api-devup-1.1.7.tgz",
+  "_resolved": "https://registry.npmjs.org/a/-/api-devup-1.2.1.tgz",
   "_spec": "api-devup",
   "author": "Zeu4s <admin@dev-up.ru> (https://vk.com/zeuvs)",
   "bugs": {

@@ -13,10 +13,8 @@ class Auth {
         getApps: "https://api.dev-up.ru/method/vk.getApps",
         getStickers: "https://api.dev-up.ru/method/vk.getStickers",
         getStickerInfo: "https://api.dev-up.ru/method/vk.getStickerInfo",
-        md5: "https://api.dev-up.ru/method/utils.md5Generate",
-        getServerTime: "https://api.dev-up.ru/method/utils.getServerTime",
         createShortLink: "https://api.dev-up.ru/method/utils.createShortLink",
-        setNotificationsLinks:
+        setNotificationsLink:
           "https://api.dev-up.ru/method/utils.notificationsLinks",
         speech: "https://api.dev-up.ru/method/audio.speech",
         profile: "https://api.dev-up.ru/method/profile.get",
@@ -39,24 +37,8 @@ class Auth {
     }
     return this.res.response;
   }
-  async md5(params) {
-    const res = await fetch(this.settings.url.md5, {
-      method: this.settings.method,
-      credentials: this.settings.credentials,
-      body: JSON.stringify({
-        key: this.settings.auth.key,
-        ...params,
-      }),
-      headers: this.settings.headers,
-    });
-    this.res = await res.json();
-    if (this.res.err) {
-      return this.res;
-    }
-    return this.res.response;
-  }
-  async setNotificationsLinks(params) {
-    const res = await fetch(this.settings.url.setNotificationsLinks, {
+  async setNotificationsLink(params) {
+    const res = await fetch(this.settings.url.setNotificationsLink, {
       method: this.settings.method,
       credentials: this.settings.credentials,
       body: JSON.stringify({
@@ -78,21 +60,6 @@ class Auth {
       body: JSON.stringify({
         key: this.settings.auth.key,
         ...params,
-      }),
-      headers: this.settings.headers,
-    });
-    this.res = await res.json();
-    if (this.res.err) {
-      return this.res;
-    }
-    return this.res.response;
-  }
-  async getServerTime(params) {
-    const res = await fetch(this.settings.url.getServerTime, {
-      method: this.settings.method,
-      credentials: this.settings.credentials,
-      body: JSON.stringify({
-        key: this.settings.auth.key,
       }),
       headers: this.settings.headers,
     });
