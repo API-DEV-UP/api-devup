@@ -14,8 +14,7 @@ class Auth {
         getStickers: "https://api.dev-up.ru/method/vk.getStickers",
         getStickerInfo: "https://api.dev-up.ru/method/vk.getStickerInfo",
         createShortLink: "https://api.dev-up.ru/method/utils.createShortLink",
-        setNotificationsLink:
-          "https://api.dev-up.ru/method/utils.notificationsLinks",
+        getWebInfo: "https://api.dev-up.ru/method/utils.getWebInfo",
         speech: "https://api.dev-up.ru/method/audio.speech",
         profile: "https://api.dev-up.ru/method/profile.get",
       },
@@ -37,8 +36,8 @@ class Auth {
     }
     return this.res.response;
   }
-  async setNotificationsLink(params) {
-    const res = await fetch(this.settings.url.setNotificationsLink, {
+  async createShortLink(params) {
+    const res = await fetch(this.settings.url.createShortLink, {
       method: this.settings.method,
       credentials: this.settings.credentials,
       body: JSON.stringify({
@@ -53,8 +52,8 @@ class Auth {
     }
     return this.res.response;
   }
-  async createShortLink(params) {
-    const res = await fetch(this.settings.url.createShortLink, {
+  async getWebInfo(params) {
+    const res = await fetch(this.settings.url.getWebInfo, {
       method: this.settings.method,
       credentials: this.settings.credentials,
       body: JSON.stringify({

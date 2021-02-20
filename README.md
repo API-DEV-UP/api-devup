@@ -44,13 +44,13 @@ run().catch(console.log);
 
 ### Library functions
 
-| Method               | Parameters         | Description                                     |
-| -------------------- | ------------------ | ----------------------------------------------- |
-| getStickers          | user_id: Number    | Retrieves a list of the user's stickers         |
-| getStickerInfo       | sticker_id: Number | Gets information about the sticker and the pack |
-| getGroups            | user_id: Number    | Retrieves the list of user groups               |
-| getApps              | user_id: Number    | Retrieves the list of the user's applications   |
-| getProfile           |                    | Retrieves profile information                   |
-| audioSpeech          | url: String        | Convert audio to text                           |
-| createShortLink      | url: String        | Link Shortening                                 |
-| setNotificationsLink | code: String       | Managing notifications from links               |
+| Method          | Parameters         | Description                                     |
+| --------------- | ------------------ | ----------------------------------------------- |
+| getStickers     | user_id: Number    | Retrieves a list of the user's stickers         |
+| getStickerInfo  | sticker_id: Number | Gets information about the sticker and the pack |
+| getGroups       | user_id: Number    | Retrieves the list of user groups               |
+| getApps         | user_id: Number    | Retrieves the list of the user's applications   |
+| getProfile      |                    | Retrieves profile information                   |
+| audioSpeech     | url: String        | Convert audio to text                           |
+| createShortLink | url: String        | Link Shortening                                 |
+| getWebInfo      | address: String    | Checking information by IP or WEB address       |
