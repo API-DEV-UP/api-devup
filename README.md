@@ -54,3 +54,5 @@ run().catch(console.log);
 | audioSpeech     | url: String        | Convert audio to text                           |
 | createShortLink | url: String        | Link Shortening                                 |
 | getWebInfo      | address: String    | Checking information by IP or WEB address       |
+| buyPremium      |                    | Purchase of a PREMIUM rate                      |
+| buyLimit        | amount: Number     | Increasing the API limit                        |

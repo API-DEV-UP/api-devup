@@ -1,6 +1,6 @@
 {
   "name": "api-devup",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "This library is intended for interaction with the service https://dev-up.ru",
   "main": "index.js",
   "dependencies": {

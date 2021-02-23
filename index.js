@@ -17,6 +17,8 @@ class Auth {
         getWebInfo: "https://api.dev-up.ru/method/utils.getWebInfo",
         speech: "https://api.dev-up.ru/method/audio.speech",
         profile: "https://api.dev-up.ru/method/profile.get",
+        buyPremium: "https://api.dev-up.ru/method/profile.balanceBuyPremium",
+        buyLimit: "https://api.dev-up.ru/method/profile.LimitBuy",
       },
     };
   }
@@ -38,6 +40,37 @@ class Auth {
   }
   async createShortLink(params) {
     const res = await fetch(this.settings.url.createShortLink, {
+      method: this.settings.method,
+      credentials: this.settings.credentials,
+      body: JSON.stringify({
+        key: this.settings.auth.key,
+        ...params,
+      }),
+      headers: this.settings.headers,
+    });
+    this.res = await res.json();
+    if (this.res.err) {
+      return this.res;
+    }
+    return this.res.response;
+  }
+  async buyPremium(params) {
+    const res = await fetch(this.settings.url.buyPremium, {
+      method: this.settings.method,
+      credentials: this.settings.credentials,
+      body: JSON.stringify({
+        key: this.settings.auth.key
+      }),
+      headers: this.settings.headers,
+    });
+    this.res = await res.json();
+    if (this.res.err) {
+      return this.res;
+    }
+    return this.res.response;
+  }
+  async buyLimit(params) {
+    const res = await fetch(this.settings.url.buyLimit, {
       method: this.settings.method,
       credentials: this.settings.credentials,
       body: JSON.stringify({
