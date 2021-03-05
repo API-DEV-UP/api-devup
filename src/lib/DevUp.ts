@@ -1,12 +1,12 @@
-import { IOptions } from "./../types";
+import { IOptions, API_Response } from "./../types";
 import axios, { AxiosRequestConfig } from "axios";
 
 import Core from "../core";
 
-type API_Response<MethodResponse> = Promise<{
-	response: MethodResponse;
-}>;
-
+/**
+ * @class
+ * @classdesc DevUp constructor
+ */
 class DevUp {
 	private API_Server = "https://api.dev-up.ru/method/";
 	private token: string;

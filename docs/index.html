@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation Home</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">DevUp API documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="DevUp.html">DevUp</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Home</h1>
+                </header>
+                
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><p align="center">
+<a href="https://www.npmjs.com/package/api-devup"><img src="https://img.shields.io/npm/v/api-devup.svg?style=flat-square" alt="NPM version"></a>
+<a href="https://www.npmjs.com/package/api-devup"><img src="https://img.shields.io/npm/dt/api-devup.svg?style=flat-square" alt="NPM downloads"></a>
+</p>
+<p>API-DEVUP is a powerful <a href="https://nodejs.org">Node.js</a> librarys is intended for interaction with the service <a href="https://dev-up.ru">DEV-UP.RU</a> 🚀</p>
+<table>
+<thead>
+<tr>
+<th>📖 <a href="https://dev-up.ru/dev">API Documentation</a></th>
+<th>🤖 <a href="https://vk.com/zeuvs">Author</a></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<h2>Features</h2>
+<ul>
+<li>Works with large collections of data</li>
+<li>Easy authorization form</li>
+</ul>
+<h2>Installation</h2>
+<blockquote>
+<p><strong><a href="https://nodejs.org/">Node.js</a> 12.0.0 or newer is required</strong></p>
+</blockquote>
+<h3>NPM</h3>
+<pre class="prettyprint source"><code>npm i api-devup --save
+</code></pre>
+<h3>Usage example</h3>
+<pre class="prettyprint source lang-js"><code>const API = require(&quot;api-devup&quot;);
+
+const api = new API({
+  key: process.env.KEY,
+});
+
+async function run() {
+  const response = await api.getGroups({
+    user_id: 1,
+  });
+  console.log(response);
+}
+
+run().catch(console.log);
+</code></pre>
+<h3>Library functions</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getStickers</td>
+<td>user_id: Number</td>
+<td>Retrieves a list of the user's stickers</td>
+</tr>
+<tr>
+<td>getStickerInfo</td>
+<td>sticker_id: Number</td>
+<td>Gets information about the sticker and the pack</td>
+</tr>
+<tr>
+<td>getGroups</td>
+<td>user_id: Number</td>
+<td>Retrieves the list of user groups</td>
+</tr>
+<tr>
+<td>getApps</td>
+<td>user_id: Number</td>
+<td>Retrieves the list of the user's applications</td>
+</tr>
+<tr>
+<td>getProfile</td>
+<td></td>
+<td>Retrieves profile information</td>
+</tr>
+<tr>
+<td>audioSpeech</td>
+<td>url: String</td>
+<td>Convert audio to text</td>
+</tr>
+<tr>
+<td>createShortLink</td>
+<td>url: String</td>
+<td>Link Shortening</td>
+</tr>
+<tr>
+<td>getWebInfo</td>
+<td>address: String</td>
+<td>Checking information by IP or WEB address</td>
+</tr>
+<tr>
+<td>buyPremium</td>
+<td></td>
+<td>Purchase of a PREMIUM rate</td>
+</tr>
+<tr>
+<td>buyLimit</td>
+<td>amount: Number</td>
+<td>Increasing the API limit</td>
+</tr>
+</tbody>
+</table></article>
+    </section>
+
+
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+</body>
+</html>

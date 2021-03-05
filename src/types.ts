@@ -6,3 +6,7 @@ export interface IOptions {
 	apiHeaders: Record<string, string>;
 	apiBaseUrl: string;
 }
+
+export type API_Response<MethodResponse> = Promise<{
+	response: MethodResponse;
+}>;
