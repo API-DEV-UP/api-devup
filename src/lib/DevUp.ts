@@ -1,42 +1,36 @@
+import { Builder } from "./API/main";
 import { IOptions, API_Response } from "./../types";
-import axios, { AxiosRequestConfig } from "axios";
-
-import Core from "../core";
+import axios from "axios";
+import VK from "./API/vk/main";
 
 /**
  * @class
  * @classdesc DevUp constructor
  */
-class DevUp {
-	private API_Server = "https://api.dev-up.ru/method/";
-	private token: string;
-	private RequestConfig: AxiosRequestConfig = {
-		headers: {
-			"User-Agent": `api-devup@${Core.version}`,
-		},
-	};
-
-	constructor(params: IOptions) {
-		this.token = params.token;
-	}
-
-	private generatePayload(params: any) {
-		return {
-			key: this.token,
-			...params,
-		};
+class DevUp extends Builder {
+	public vk: VK;
+	constructor(params: IOptions | string) {
+		super(params);
+		this.vk = new VK(params);
 	}
 
 	public async call(
 		method: string,
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		params: Record<string, any>,
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	): API_Response<any> {
 		return (
 			await axios.post(
-				this.API_Server + method,
-				this.generatePayload(params),
+				this + method,
+				{
+					key: this.token,
+					...params,
+				},
 				this.RequestConfig,
 			)
 		).data;
 	}
 }
+
+export default DevUp;

@@ -3,8 +3,8 @@ export interface IOptions {
 	/**
 	 * @defaultValue `{User-Agent: "api-devup@${Core.version}"}`
 	 */
-	apiHeaders: Record<string, string>;
-	apiBaseUrl: string;
+	apiHeaders?: Record<string, string>;
+	apiURL?: string;
 }
 
 export type API_Response<MethodResponse> = Promise<{
