@@ -27,4 +27,4 @@ export interface Response {
 	};
 }
 
-export const Method = "vk.getStickers";
+export const method = "vk.getStickers";
