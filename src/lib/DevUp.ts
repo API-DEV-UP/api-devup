@@ -3,6 +3,8 @@ import { IOptions, API_Response } from "./../types";
 
 import VK from "./API/vk/main";
 import Profile from "./API/profile/main";
+import Audio from "./API/audio/main";
+import Utils from "./API/utils/main";
 
 /**
  * @class
@@ -11,11 +13,15 @@ import Profile from "./API/profile/main";
 class DevUp extends Builder {
 	public vk: VK;
 	public profile: Profile;
+	public audio: Audio;
+	public utils: Utils;
 
 	constructor(params: IOptions | string) {
 		super(params);
 		this.vk = new VK(params);
 		this.profile = new Profile(params);
+		this.audio = new Audio(params);
+		this.utils = new Utils(params);
 	}
 
 	public call = async (
