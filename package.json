@@ -1,45 +1,43 @@
 {
-  "name": "api-devup",
-  "version": "1.2.3",
-  "description": "This library is intended for interaction with the service https://dev-up.ru",
-  "main": "index.js",
-  "dependencies": {
-    "node-fetch": "^2.6.1" 
-  },
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "api-devup",
-    "name": "api-devup",
-    "escapedName": "api-devup",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
-  },
-  "_resolved": "https://registry.npmjs.org/a/-/api-devup-1.2.1.tgz",
-  "_spec": "api-devup",
-  "author": "Zeu4s <admin@dev-up.ru> (https://vk.com/zeuvs)",
-  "bugs": {
-    "url": "https://github.com/zeu45/api-devup/issues"
-  },
-  "module": "index.js",
-    "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zeu45/api-devup.git"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "engines": {
-    "node": ">=12.0.0"
-  },
-  "keywords": [
-    "dev-up",
-    "auth-vk",
-    "fetch",
-    "node-fetch",
-    "vk"
-  ],
-  "license": "ISC"
+	"name": "api-devup",
+	"version": "1.2.3",
+	"description": "This library is intended for interaction with the service https://dev-up.ru",
+	"main": "./dist/cjs/main.js",
+	"module": "./dist/main.js",
+	"author": "Zeu4s <admin@dev-up.ru> (https://vk.com/zeuvs)",
+	"contributors": [
+		"RusAnonym <alexandrsemin2033@gmail.com>"
+	],
+	"bugs": {
+		"url": "https://github.com/zeu45/api-devup/issues"
+	},
+	"scripts": {
+		"build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+		"test": "yarn build && node test.js",
+		"lint": "eslint ./src --ext .ts",
+		"docs": "jsdoc -c jsdoc.json",
+		"prepublish": "yarn build && yarn docs"
+	},
+	"engines": {
+		"node": ">=12.0.0"
+	},
+	"keywords": [
+		"dev-up",
+		"auth-vk",
+		"fetch",
+		"node-fetch",
+		"vk"
+	],
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^0.21.1"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^4.16.1",
+		"@typescript-eslint/parser": "^4.16.1",
+		"better-docs": "^2.3.2",
+		"eslint": "^7.21.0",
+		"jsdoc": "^3.6.6",
+		"typescript": "^4.2.3"
+	}
 }

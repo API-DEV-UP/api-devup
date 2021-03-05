@@ -1,0 +1,32 @@
+{
+	"tags": {
+		"allowUnknownTags": true
+	},
+	"source": {
+		"include": ["./src/"],
+		"includePattern": "\\.(ts|js)$"
+	},
+	"plugins": [
+		"node_modules/better-docs/typescript",
+		"node_modules/better-docs/typedef-import",
+		"node_modules/better-docs/category",
+		"plugins/markdown"
+	],
+	"opts": {
+		"encoding": "utf8",
+		"destination": "docs/",
+		"recurse": true,
+		"verbose": true,
+		"readme": "./README.md",
+		"template": "node_modules/better-docs"
+	},
+	"templates": {
+		"cleverLinks": false,
+		"monospaceLinks": false,
+		"better-docs": {
+			"name": "DevUp API documentation",
+			"title": "Documentation"
+		},
+		"search": true
+	}
+}
