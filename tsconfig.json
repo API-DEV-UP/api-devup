@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"lib": ["DOM", "ES6"],
+		"target": "ES2019",
+		"module": "ESNext",
+		"outDir": "./dist/",
+		"moduleResolution": "Node",
+		"declaration": true,
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true
+	},
+	"include": ["./src"]
+}

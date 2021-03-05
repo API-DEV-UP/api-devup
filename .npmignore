@@ -1,0 +1,8 @@
+/src
+/docs
+/.git
+yarn.lock
+tsconfig.json
+tsconfig-cjs.json
+jsdoc.json
+.eslintrc
