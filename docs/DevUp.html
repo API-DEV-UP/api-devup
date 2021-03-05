@@ -74,7 +74,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="DevUp.html">DevUp</a></li></ul><h3>Interfaces</h3><ul><li><a href="IOptions.html">IOptions</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="DevUp.html">DevUp</a></li><li><a href="DevUpError.html">DevUpError</a></li></ul><h3>Interfaces</h3><ul><li><a href="IOptions.html">IOptions</a></li></ul></div>
                 
             </nav>
         </div>
@@ -95,7 +95,7 @@
     
         <h2><span class="attribs"><span class="type-signature"></span></span>DevUp<span class="signature">(params)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>DevUp constructor</p></div>
+            <div class="class-description"><p>DevUp API constructor</p></div>
         
     
 </header>
@@ -229,7 +229,7 @@
         <p class="tag-source">
             <a href="lib_DevUp.ts.html" class="button">View Source</a>
             <span>
-                <a href="lib_DevUp.ts.html">lib/DevUp.ts</a>, <a href="lib_DevUp.ts.html#line23">line 23</a>
+                <a href="lib_DevUp.ts.html">lib/DevUp.ts</a>, <a href="lib_DevUp.ts.html#line10">line 10</a>
             </span>
         </p>
     
@@ -292,82 +292,6 @@ const API = new DevUp({
     
 
     
-        <div class='vertical-section'>
-            <h1>Members</h1>
-            <div class="members">
-            
-                <div class="member">
-
-<h4 class="name" id="call">
-    <a class="href-link" href="#call">#</a>
-    
-    <span class="code-name">
-        call
-    </span>
-    
-</h4>
-
-
-
-
-<div class="description">
-    <p>Метод для выполнения запроса к недобавленным методам</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="lib_DevUp.ts.html" class="button">View Source</a>
-            <span>
-                <a href="lib_DevUp.ts.html">lib/DevUp.ts</a>, <a href="lib_DevUp.ts.html#line55">line 55</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-</div>
-            
-            </div>
-        </div>
-    
 
     
         <div class='vertical-section'>
@@ -381,9 +305,13 @@ const API = new DevUp({
     <h4 class="name" id="call">
         <a class="href-link" href="#call">#</a>
         
+            
+                <span class='tag'>async</span>
+            
+        
         <span class="code-name">
             
-                call<span class="signature">(method, params)</span><span class="type-signature"></span>
+                call<span class="signature">(method, params<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -417,7 +345,11 @@ const API = new DevUp({
             <th>Type</th>
 
             
+            <th>Attributes</th>
+            
 
+            
+            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -443,7 +375,19 @@ const API = new DevUp({
   </td>
 
   
+      <td class="attributes">
+      
 
+      
+
+      
+      </td>
+  
+
+  
+      <td class="default">
+      
+      </td>
   
 
   <td class="description last"><p>Метод</p></td>
@@ -468,7 +412,23 @@ const API = new DevUp({
   </td>
 
   
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
 
+      
+
+      
+      </td>
+  
+
+  
+      <td class="default">
+      
+          {}
+      
+      </td>
   
 
   <td class="description last"><p>Параметры</p></td>
@@ -519,7 +479,7 @@ const API = new DevUp({
         <p class="tag-source">
             <a href="lib_DevUp.ts.html" class="button">View Source</a>
             <span>
-                <a href="lib_DevUp.ts.html">lib/DevUp.ts</a>, <a href="lib_DevUp.ts.html#line31">line 31</a>
+                <a href="lib_DevUp.ts.html">lib/DevUp.ts</a>, <a href="lib_DevUp.ts.html#line40">line 40</a>
             </span>
         </p>
     
@@ -543,6 +503,13 @@ const API = new DevUp({
 
 
 
+
+
+    <h5>Example</h5>
+    
+    
+        <pre class="prettyprint"><code>API.call("profile.get").then(res => console.log(res));</code></pre>
+    
 
 
 </div>

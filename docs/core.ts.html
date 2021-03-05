@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Documentation Home</title>
+  <title>Documentation core.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -81,81 +83,84 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>core.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><p align="center">
-<a href="https://www.npmjs.com/package/api-devup"><img src="https://img.shields.io/npm/v/api-devup.svg?style=flat-square" alt="NPM version"></a>
-<a href="https://www.npmjs.com/package/api-devup"><img src="https://img.shields.io/npm/dt/api-devup.svg?style=flat-square" alt="NPM downloads"></a>
-</p>
-<p>API-DEVUP is a powerful <a href="https://nodejs.org">Node.js</a> library is intended for interaction with the service <a href="https://dev-up.ru">DEV-UP.RU</a> 🚀</p>
-<table>
-<thead>
-<tr>
-<th>📖 <a href="https://dev-up.ru/dev">API Documentation</a></th>
-<th>🤖 <a href="https://vk.com/zeuvs">Author</a></th>
-</tr>
-</thead>
-<tbody></tbody>
-</table>
-<h2>Features</h2>
-<ul>
-<li>Works with large collections of data</li>
-<li>Easy authorization form</li>
-</ul>
-<h2>Installation</h2>
-<blockquote>
-<p><strong><a href="https://nodejs.org/">Node.js</a> 12.0.0 or newer is required</strong></p>
-</blockquote>
-<h3>YARN</h3>
-<pre class="prettyprint source lang-console"><code>yarn add api-devup
-</code></pre>
-<h3>NPM</h3>
-<pre class="prettyprint source"><code>npm i api-devup --save
-</code></pre>
-<h3>Usage example</h3>
-<pre class="prettyprint source lang-js"><code>const API = require(&quot;api-devup&quot;);
+        <article>
+            <pre class="prettyprint source linenums"><code>const MODULE_VERSION = "1.3.1";
+const DEFAULT_API_URL = "https://api.dev-up.ru/method/";
 
-const api = new API({
-	key: process.env.KEY,
-});
+class DevUpError extends Error {
+	/**
+	 * Error code
+	 */
+	public code: string | number;
 
-async function run() {
-	const response = await api.getGroups({
-		user_id: 1,
-	});
-	console.log(response);
+	/**
+	 * Error level
+	 */
+	public level: string;
+
+	/**
+	 * Error stack
+	 */
+	public stack!: string;
+
+	/**
+	 * Constructor
+	 */
+	public constructor({
+		err_code: code,
+		err_critical_lvl: level,
+		err_msg: message,
+	}: {
+		err_code: number;
+		err_critical_lvl: string;
+		err_msg: string;
+	}) {
+		super(message);
+
+		this.code = code;
+		this.level = level;
+
+		this.name = this.constructor.name;
+	}
+
+	/**
+	 * Returns custom tag
+	 */
+	public get [Symbol.toStringTag](): string {
+		return this.constructor.name;
+	}
+
+	/**
+	 * Returns property for json
+	 */
+	public toJSON(): Pick&lt;this, keyof this> {
+		const json = {} as Pick&lt;this, keyof this>;
+
+		for (const key of Object.getOwnPropertyNames(this)) {
+			json[key as keyof this] = this[key as keyof this];
+		}
+
+		return json;
+	}
 }
 
-run().catch(console.log);
-</code></pre></article>
+export default {
+	version: MODULE_VERSION,
+	url: DEFAULT_API_URL,
+	error: DevUpError,
+};
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

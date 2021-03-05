@@ -1,6 +1,6 @@
 {
 	"name": "api-devup",
-	"version": "1.2.3",
+	"version": "1.3.1",
 	"description": "This library is intended for interaction with the service https://dev-up.ru",
 	"main": "./dist/cjs/main.js",
 	"module": "./dist/main.js",
