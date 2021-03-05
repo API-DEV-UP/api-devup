@@ -29,7 +29,7 @@ export default class VK extends Builder {
 	): API_Response<getGroups.Response> =>
 		this.postRequest(getGroups.method, params);
 
-	public getApps = async (
+	public getApps = async ( 
 		params: getApps.Params,
 	): API_Response<getApps.Response> => this.postRequest(getApps.method, params);
 
