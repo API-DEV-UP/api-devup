@@ -5,6 +5,9 @@
 	"main": "./dist/cjs/main.js",
 	"module": "./dist/main.js",
 	"author": "Zeu4s <admin@dev-up.ru> (https://vk.com/zeuvs)",
+	"contributors": [
+		"RusAnonym <alexandrsemin2033@gmail.com>"
+	],
 	"bugs": {
 		"url": "https://github.com/zeu45/api-devup/issues"
 	},
