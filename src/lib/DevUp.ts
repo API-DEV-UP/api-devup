@@ -9,6 +9,18 @@ import Utils from "./API/utils/main";
 /**
  * @class
  * @classdesc DevUp constructor
+ * @param {Object|string} - Можно передать либо токен, либо набор параметров ({@link IOptions})
+ * @example
+ * const { DevUp } = require(`api-devup`);
+ *
+ * const API = new DevUp("token");
+ * // Or
+ * const API = new DevUp({
+ * 	token: "token",
+ * 	apiHeader: {
+ * 		"User-Agent": "Custom-UserAgent"
+ * 	}
+ * });
  */
 class DevUp extends Builder {
 	public vk: VK;
@@ -24,6 +36,11 @@ class DevUp extends Builder {
 		this.utils = new Utils(params);
 	}
 
+	/**
+	 * @description Метод для выполнения запроса к недобавленным методам
+	 * @param method {string} - Метод
+	 * @param params {Record<string, any>} - Параметры
+	 */
 	public call = async (
 		method: string,
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
