@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Documentation Home</title>
+  <title>Documentation types.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -81,81 +83,43 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p></p>
-                    <h1>Home</h1>
+                    <p>Source</p>
+                    <h1>types.ts</h1>
                 </header>
                 
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><p align="center">
-<a href="https://www.npmjs.com/package/api-devup"><img src="https://img.shields.io/npm/v/api-devup.svg?style=flat-square" alt="NPM version"></a>
-<a href="https://www.npmjs.com/package/api-devup"><img src="https://img.shields.io/npm/dt/api-devup.svg?style=flat-square" alt="NPM downloads"></a>
-</p>
-<p>API-DEVUP is a powerful <a href="https://nodejs.org">Node.js</a> library is intended for interaction with the service <a href="https://dev-up.ru">DEV-UP.RU</a> 🚀</p>
-<table>
-<thead>
-<tr>
-<th>📖 <a href="https://dev-up.ru/dev">API Documentation</a></th>
-<th>🤖 <a href="https://vk.com/zeuvs">Author</a></th>
-</tr>
-</thead>
-<tbody></tbody>
-</table>
-<h2>Features</h2>
-<ul>
-<li>Works with large collections of data</li>
-<li>Easy authorization form</li>
-</ul>
-<h2>Installation</h2>
-<blockquote>
-<p><strong><a href="https://nodejs.org/">Node.js</a> 12.0.0 or newer is required</strong></p>
-</blockquote>
-<h3>YARN</h3>
-<pre class="prettyprint source lang-console"><code>yarn add api-devup
-</code></pre>
-<h3>NPM</h3>
-<pre class="prettyprint source"><code>npm i api-devup --save
-</code></pre>
-<h3>Usage example</h3>
-<pre class="prettyprint source lang-js"><code>const API = require(&quot;api-devup&quot;);
-
-const api = new API({
-	key: process.env.KEY,
-});
-
-async function run() {
-	const response = await api.getGroups({
-		user_id: 1,
-	});
-	console.log(response);
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @typedef {object} IOptions
+ * @property {string} token - токен
+ * @property {Record&lt;string, string>} apiHeaders - набор параметров
+ * @property {string} apiURL - возможность выбора другого сервера API
+ */
+export interface IOptions {
+	token: string;
+	/**
+	 * @default
+	 * {
+	 * 	User-Agent: "api-devup@${Core.version}"
+	 * }
+	 */
+	apiHeaders?: Record&lt;string, string>;
+	/**
+	 * @default https://api.dev-up.ru/method/
+	 */
+	apiURL?: string;
 }
 
-run().catch(console.log);
-</code></pre></article>
+export type API_Response&lt;MethodResponse> = Promise&lt;{
+	response: MethodResponse;
+}>;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
