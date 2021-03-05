@@ -1,6 +1,8 @@
 import { Builder } from "./API/main";
 import { IOptions, API_Response } from "./../types";
+
 import VK from "./API/vk/main";
+import Profile from "./API/profile/main";
 
 /**
  * @class
@@ -8,9 +10,12 @@ import VK from "./API/vk/main";
  */
 class DevUp extends Builder {
 	public vk: VK;
+	public profile: Profile;
+
 	constructor(params: IOptions | string) {
 		super(params);
 		this.vk = new VK(params);
+		this.profile = new Profile(params);
 	}
 
 	public call = async (
