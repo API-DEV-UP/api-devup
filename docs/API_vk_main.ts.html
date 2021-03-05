@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Documentation DevUp.ts</title>
+  <title>Documentation API/vk/main.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -84,7 +84,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>DevUp.ts</h1>
+                    <h1>API/vk/main.ts</h1>
                 </header>
                 
 
@@ -93,30 +93,24 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { Builder } from "./API/main";
-import { IOptions, API_Response } from "./../types";
-import VK from "./API/vk/main";
+            <pre class="prettyprint source linenums"><code>import { IOptions } from "./../../../types";
+import { Builder } from "./../main";
+import { API_Response } from "../../../types";
 
-/**
- * @class
- * @classdesc DevUp constructor
- */
-class DevUp extends Builder {
-	public vk: VK;
+import * as getStickers from "./methods/getStickers";
+export default class VK extends Builder {
 	constructor(params: IOptions | string) {
 		super(params);
-		this.vk = new VK(params);
 	}
 
-	public call = async (
-		method: string,
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		params: Record&lt;string, any>,
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	): API_Response&lt;any> => this.postRequest(method, params);
+	/**
+	 * getStickers
+	 */
+	public getStickers = async (
+		params: getStickers.Params,
+	): API_Response&lt;getStickers.Response> =>
+		this.postRequest(getStickers.Method, params);
 }
-
-export default DevUp;
 </code></pre>
         </article>
     </section>
