@@ -1,6 +1,5 @@
 import { Builder } from "./API/main";
 import { IOptions, API_Response } from "./../types";
-import axios from "axios";
 import VK from "./API/vk/main";
 
 /**
@@ -14,23 +13,12 @@ class DevUp extends Builder {
 		this.vk = new VK(params);
 	}
 
-	public async call(
+	public call = async (
 		method: string,
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		params: Record<string, any>,
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	): API_Response<any> {
-		return (
-			await axios.post(
-				this + method,
-				{
-					key: this.token,
-					...params,
-				},
-				this.RequestConfig,
-			)
-		).data;
-	}
+	): API_Response<any> => this.postRequest(method, params);
 }
 
 export default DevUp;

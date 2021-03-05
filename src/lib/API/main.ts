@@ -1,4 +1,4 @@
-import { AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { IOptions } from "./../../types";
 import Core from "../../core";
 
@@ -20,5 +20,23 @@ export class Builder {
 				params.apiHeaders || this.RequestConfig.headers;
 			this.apiURL = params.apiURL || this.apiURL;
 		}
+	}
+
+	protected async postRequest(
+		method: string,
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		data?: Record<string, any>,
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	): Promise<any> {
+		return (
+			await axios.post(
+				this.apiURL + method,
+				{
+					key: this.token,
+					...data,
+				},
+				this.RequestConfig,
+			)
+		).data;
 	}
 }
