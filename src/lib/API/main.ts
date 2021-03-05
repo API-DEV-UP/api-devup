@@ -28,15 +28,22 @@ export class Builder {
 		data?: Record<string, any>,
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	): Promise<any> {
-		return (
-			await axios.post(
+		try {
+			const Response = await axios.post(
 				this.apiURL + method,
 				{
 					key: this.token,
 					...data,
 				},
 				this.RequestConfig,
-			)
-		).data;
+			);
+			return Response.data;
+		} catch (error) {
+			console.log(error.response.data.err);
+			throw new Core.error(error.response.data.err);
+		}
 	}
+
+	// protected async request(data, params: Record<string, any>)
+	// TODO сделать возможность преобработки запросов и ответов
 }
