@@ -37,10 +37,21 @@ export class Builder {
 				},
 				this.RequestConfig,
 			);
+
+			if (Response.data.err) {
+				throw new Core.error(Response.data.err, Response.data.params || []);
+			}
+
 			return Response.data;
 		} catch (error) {
-			console.log(error.response.data.err);
-			throw new Core.error(error.response.data.err);
+			if (error.response?.data?.err) {
+				throw new Core.error(
+					error.response.data.err,
+					error.response.data.params || [],
+				);
+			} else {
+				console.log(error);
+			}
 		}
 	}
 

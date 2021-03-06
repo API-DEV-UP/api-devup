@@ -1,5 +1,7 @@
-const MODULE_VERSION = "1.3.3";
+const MODULE_VERSION = "1.3.4";
 const DEFAULT_API_URL = "https://api.dev-up.ru/method/";
+
+type RequestParam = { key: string; value: number | string | boolean };
 
 /**
  * Основной класс ошибок которые могут произойти в модуле
@@ -12,6 +14,11 @@ class DevUpError extends Error {
 	public code: string | number;
 
 	/**
+	 * Параметры запроса
+	 */
+	public params: RequestParam[];
+
+	/**
 	 * Уровень критичности ошибки
 	 */
 	public level: string;
@@ -21,19 +28,23 @@ class DevUpError extends Error {
 	 */
 	public stack!: string;
 
-	public constructor({
-		err_code: code,
-		err_critical_lvl: level,
-		err_msg: message,
-	}: {
-		err_code: number;
-		err_critical_lvl: string;
-		err_msg: string;
-	}) {
+	public constructor(
+		{
+			err_code: code,
+			err_critical_lvl: level,
+			err_msg: message,
+		}: {
+			err_code: number;
+			err_critical_lvl: string;
+			err_msg: string;
+		},
+		params: RequestParam[],
+	) {
 		super(message);
 
 		this.code = code;
 		this.level = level;
+		this.params = params;
 
 		this.name = this.constructor.name;
 	}
