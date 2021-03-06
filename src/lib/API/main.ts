@@ -39,16 +39,13 @@ export class Builder {
 			);
 
 			if (Response.data.err) {
-				throw new Core.error(Response.data.err, Response.data.params || []);
+				throw new Core.error(Response.data.err);
 			}
 
 			return Response.data;
 		} catch (error) {
 			if (error.response?.data?.err) {
-				throw new Core.error(
-					error.response.data.err,
-					error.response.data.params || [],
-				);
+				throw new Core.error(error.response.data.err);
 			} else {
 				console.log(error);
 			}
