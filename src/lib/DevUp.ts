@@ -1,5 +1,7 @@
+import { promise as ping } from "ping";
+
 import { Builder } from "./API/main";
-import { IOptions, API_Response } from "./../types";
+import { IOptions, API_Response, PingResponse } from "./../types";
 
 import VK from "./API/vk/main";
 import Profile from "./API/profile/main";
@@ -25,7 +27,7 @@ class DevUp extends Builder {
 	 * // Or
 	 * const API = new DevUp({
 	 * 	token: "token",
-	 * 	apiHeader: {
+	 * 	apiHeaders: {
 	 * 		"User-Agent": "Custom-UserAgent"
 	 * 	}
 	 * });
@@ -52,6 +54,29 @@ class DevUp extends Builder {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	): API_Response<any> {
 		return this.postRequest(method, params);
+	}
+
+	/**
+	 * Позволяет узнать текущий пинг до API
+	 * @returns {Object} Объект с результатом {@link PingResponse}
+	 * @example
+	 * API.ping().then(res => console.log(res));
+	 */
+	public async ping(): Promise<PingResponse> {
+		const url = this.apiURL;
+		let hostname;
+		url.indexOf("//") > -1
+			? (hostname = url.split("/")[2])
+			: (hostname = url.split("/")[0]);
+		hostname = hostname.split(":")[0];
+		hostname = hostname.split("?")[0];
+		const PingData = await ping.probe(hostname);
+		return {
+			host: PingData.host,
+			alive: PingData.alive,
+			time: Number(PingData.time) || 0,
+			ip: PingData.numeric_host || "0.0.0.0",
+		};
 	}
 }
 

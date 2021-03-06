@@ -19,6 +19,20 @@ export interface IOptions {
 	apiURL?: string;
 }
 
+/**
+ * @typedef {object} PingResponse
+ * @property {string} host - Хост
+ * @property {boolean} alive - Статус API
+ * @property {number} time - Пинг до API
+ * @property {string} ip - IP-адрес API
+ */
+export interface PingResponse {
+	host: string;
+	alive: boolean;
+	time: number;
+	ip: string;
+}
+
 export type API_Response<MethodResponse> = Promise<{
 	response: MethodResponse;
 }>;

@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Documentation IOptions</title>
+  <title>Documentation PingResponse</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -82,7 +82,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Interface</p>
-                    <h1>IOptions</h1>
+                    <h1>PingResponse</h1>
                 </header>
                 
 
@@ -93,7 +93,7 @@
 
 <header>
     
-        <h2>IOptions</h2>
+        <h2>PingResponse</h2>
         
     
 </header>
@@ -132,7 +132,7 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>token</code></td>
+        <td class="name"><code>host</code></td>
     
 
     <td class="type">
@@ -148,20 +148,20 @@
 
     
 
-    <td class="description last"><p>токен</p></td>
+    <td class="description last"><p>Хост</p></td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>apiHeaders</code></td>
+        <td class="name"><code>alive</code></td>
     
 
     <td class="type">
     
         
-<span class="param-type">Record.&lt;string, string></span>
+<span class="param-type">boolean</span>
 
 
     
@@ -171,14 +171,37 @@
 
     
 
-    <td class="description last"><p>набор параметров</p></td>
+    <td class="description last"><p>Статус API</p></td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>apiURL</code></td>
+        <td class="name"><code>time</code></td>
+    
+
+    <td class="type">
+    
+        
+<span class="param-type">number</span>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>Пинг до API</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>ip</code></td>
     
 
     <td class="type">
@@ -194,7 +217,7 @@
 
     
 
-    <td class="description last"><p>возможность выбора другого сервера API</p></td>
+    <td class="description last"><p>IP-адрес API</p></td>
 </tr>
 
         
@@ -239,7 +262,7 @@
         <p class="tag-source">
             <a href="types.ts.html" class="button">View Source</a>
             <span>
-                <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line3">line 3</a>
+                <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line25">line 25</a>
             </span>
         </p>
     
@@ -262,175 +285,6 @@
 
     
 
-    
-        <div class='vertical-section'>
-            <h1>Members</h1>
-            <div class="members">
-            
-                <div class="member">
-
-    <span class="method-parameter is-pulled-right">
-        <label>Type:</label>
-        
-<span class="param-type">Record.&lt;string, string></span>
-
-
-    </span>
-
-<h4 class="name" id="apiHeaders">
-    <a class="href-link" href="#apiHeaders">#</a>
-    
-    <span class="code-name">
-        apiHeaders
-    </span>
-    
-        <span class='tag'>Optional</span>
-    
-</h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>{
-	User-Agent: "api-devup@${Core.version}"
-}</li>
-        </ul></dd>
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="types.ts.html" class="button">View Source</a>
-            <span>
-                <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line10">line 10</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-</div>
-            
-                <div class="member">
-
-    <span class="method-parameter is-pulled-right">
-        <label>Type:</label>
-        
-<span class="param-type">string</span>
-
-
-    </span>
-
-<h4 class="name" id="apiURL">
-    <a class="href-link" href="#apiURL">#</a>
-    
-    <span class="code-name">
-        apiURL
-    </span>
-    
-        <span class='tag'>Optional</span>
-    
-</h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy">
-            <li>https://api.dev-up.ru/method/</li>
-        </ul></dd>
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="types.ts.html" class="button">View Source</a>
-            <span>
-                <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line19">line 19</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-</div>
-            
-            </div>
-        </div>
     
 
     

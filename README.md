@@ -5,8 +5,8 @@
 
 API-DEVUP is a powerful [Node.js](https://nodejs.org) library is intended for interaction with the service [DEV-UP.RU](https://dev-up.ru) 🚀
 
-| 📖 [API Documentation](https://dev-up.ru/dev) | 🤖 [Author](https://vk.com/zeuvs) |
-| --------------------------------------------- | --------------------------------- |
+| 📖 [API Documentation](https://dev-up.ru/dev) | 📖 [Module Documentation](https://api-dev-up.github.io/api-devup/index.html) | 🤖 [Author](https://vk.com/zeuvs) |
+| --------------------------------------------- | ---------------------------------------------------------------------------- | --------------------------------- |
 
 ## Features
 
@@ -25,25 +25,28 @@ yarn add api-devup
 
 ### NPM
 
-```
+```console
 npm i api-devup --save
 ```
 
 ### Usage example
 
+JavaScript
+
 ```js
-const API = require("api-devup");
+const { DevUp } = require("api-devup");
 
-const api = new API({
-	key: process.env.KEY,
-});
+const API = new DevUp("token");
 
-async function run() {
-	const response = await api.getGroups({
-		user_id: 1,
-	});
-	console.log(response);
-}
+API.profile.get().then((res) => console.log(res));
+```
 
-run().catch(console.log);
+TypeScript
+
+```ts
+import { DevUp } from "api-devup";
+
+const API = new DevUp("token");
+
+API.profile.get().then((res) => console.log(res));
 ```
