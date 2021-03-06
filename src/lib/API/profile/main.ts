@@ -8,6 +8,6 @@ export default class Profile extends Builder {
 		super(params);
 	}
 
-	public get = async (params: get.Params): API_Response<get.Response> =>
+	public get = async (params?: get.Params): API_Response<get.Response> =>
 		this.postRequest(get.method, params);
 }

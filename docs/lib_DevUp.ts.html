@@ -76,7 +76,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="DevUp.html">DevUp</a></li><li><a href="DevUpError.html">DevUpError</a></li></ul><h3>Interfaces</h3><ul><li><a href="IOptions.html">IOptions</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="DevUp.html">DevUp</a></li><li><a href="DevUpError.html">DevUpError</a></li></ul><h3>Interfaces</h3><ul><li><a href="IOptions.html">IOptions</a></li><li><a href="PingResponse.html">PingResponse</a></li></ul></div>
                 
             </nav>
         </div>
@@ -96,7 +96,7 @@
             <pre class="prettyprint source linenums"><code>import { promise as ping } from "ping";
 
 import { Builder } from "./API/main";
-import { IOptions, API_Response } from "./../types";
+import { IOptions, API_Response, PingResponse } from "./../types";
 
 import VK from "./API/vk/main";
 import Profile from "./API/profile/main";
@@ -122,7 +122,7 @@ class DevUp extends Builder {
 	 * // Or
 	 * const API = new DevUp({
 	 * 	token: "token",
-	 * 	apiHeader: {
+	 * 	apiHeaders: {
 	 * 		"User-Agent": "Custom-UserAgent"
 	 * 	}
 	 * });
@@ -153,18 +153,11 @@ class DevUp extends Builder {
 
 	/**
 	 * Позволяет узнать текущий пинг до API
-	 * @returns {Object} response Объект с результатом
-	 * @returns {string} response.host Хост
-	 * @returns {boolean} response.alive Статус API
-	 * @returns {number} response.time Пинг до API
-	 * @returns {string} response.ip IP-адрес API
+	 * @returns {Object} Объект с результатом {@link PingResponse}
+	 * @example
+	 * API.ping().then(res => console.log(res));
 	 */
-	public ping = async (): Promise&lt;{
-		host: string;
-		alive: boolean;
-		time: number;
-		ip: string;
-	}> => {
+	public async ping(): Promise&lt;PingResponse> {
 		const url = this.apiURL;
 		let hostname;
 		url.indexOf("//") > -1
@@ -179,7 +172,7 @@ class DevUp extends Builder {
 			time: Number(PingData.time) || 0,
 			ip: PingData.numeric_host || "0.0.0.0",
 		};
-	};
+	}
 }
 
 export default DevUp;

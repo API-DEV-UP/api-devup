@@ -18,7 +18,7 @@ export default class Utils extends Builder {
 		this.postRequest(md5Generate.method, params);
 
 	public getServerTime = async (
-		params: getServerTime.Params,
+		params?: getServerTime.Params,
 	): API_Response<getServerTime.Response> =>
 		this.postRequest(getServerTime.method, params);
 

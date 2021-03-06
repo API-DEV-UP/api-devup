@@ -74,7 +74,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="DevUp.html">DevUp</a></li><li><a href="DevUpError.html">DevUpError</a></li></ul><h3>Interfaces</h3><ul><li><a href="IOptions.html">IOptions</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="DevUp.html">DevUp</a></li><li><a href="DevUpError.html">DevUpError</a></li></ul><h3>Interfaces</h3><ul><li><a href="IOptions.html">IOptions</a></li><li><a href="PingResponse.html">PingResponse</a></li></ul></div>
                 
             </nav>
         </div>
@@ -117,6 +117,7 @@
 <thead>
 <tr>
 <th>📖 <a href="https://dev-up.ru/dev">API Documentation</a></th>
+<th>📖 <a href="https://api-dev-up.github.io/api-devup/index.html">Module Documentation</a></th>
 <th>🤖 <a href="https://vk.com/zeuvs">Author</a></th>
 </tr>
 </thead>
@@ -135,23 +136,22 @@
 <pre class="prettyprint source lang-console"><code>yarn add api-devup
 </code></pre>
 <h3>NPM</h3>
-<pre class="prettyprint source"><code>npm i api-devup --save
+<pre class="prettyprint source lang-console"><code>npm i api-devup --save
 </code></pre>
 <h3>Usage example</h3>
-<pre class="prettyprint source lang-js"><code>const API = require(&quot;api-devup&quot;);
+<p>JavaScript</p>
+<pre class="prettyprint source lang-js"><code>const { DevUp } = require(&quot;api-devup&quot;);
 
-const api = new API({
-	key: process.env.KEY,
-});
+const API = new DevUp(&quot;token&quot;);
 
-async function run() {
-	const response = await api.getGroups({
-		user_id: 1,
-	});
-	console.log(response);
-}
+API.profile.get().then((res) => console.log(res));
+</code></pre>
+<p>TypeScript</p>
+<pre class="prettyprint source lang-ts"><code>import { DevUp } from &quot;api-devup&quot;;
 
-run().catch(console.log);
+const API = new DevUp(&quot;token&quot;);
+
+API.profile.get().then((res) => console.log(res));
 </code></pre></article>
     </section>
 

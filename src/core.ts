@@ -1,25 +1,26 @@
 const MODULE_VERSION = "1.3.2";
 const DEFAULT_API_URL = "https://api.dev-up.ru/method/";
 
+/**
+ * Основной класс ошибок которые могут произойти в модуле
+ * @hideconstructor
+ */
 class DevUpError extends Error {
 	/**
-	 * Error code
+	 * Код ошибки
 	 */
 	public code: string | number;
 
 	/**
-	 * Error level
+	 * Уровень критичности ошибки
 	 */
 	public level: string;
 
 	/**
-	 * Error stack
+	 * Стэк ошибки
 	 */
 	public stack!: string;
 
-	/**
-	 * Constructor
-	 */
 	public constructor({
 		err_code: code,
 		err_critical_lvl: level,
@@ -37,15 +38,12 @@ class DevUpError extends Error {
 		this.name = this.constructor.name;
 	}
 
-	/**
-	 * Returns custom tag
-	 */
 	public get [Symbol.toStringTag](): string {
 		return this.constructor.name;
 	}
 
 	/**
-	 * Returns property for json
+	 * Возвращает содержимое ошибки в JSON
 	 */
 	public toJSON(): Pick<this, keyof this> {
 		const json = {} as Pick<this, keyof this>;

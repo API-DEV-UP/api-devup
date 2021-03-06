@@ -76,7 +76,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="DevUp.html">DevUp</a></li><li><a href="DevUpError.html">DevUpError</a></li></ul><h3>Interfaces</h3><ul><li><a href="IOptions.html">IOptions</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="DevUp.html">DevUp</a></li><li><a href="DevUpError.html">DevUpError</a></li></ul><h3>Interfaces</h3><ul><li><a href="IOptions.html">IOptions</a></li><li><a href="PingResponse.html">PingResponse</a></li></ul></div>
                 
             </nav>
         </div>
@@ -96,25 +96,26 @@
             <pre class="prettyprint source linenums"><code>const MODULE_VERSION = "1.3.2";
 const DEFAULT_API_URL = "https://api.dev-up.ru/method/";
 
+/**
+ * Основной класс ошибок которые могут произойти в модуле
+ * @hideconstructor
+ */
 class DevUpError extends Error {
 	/**
-	 * Error code
+	 * Код ошибки
 	 */
 	public code: string | number;
 
 	/**
-	 * Error level
+	 * Уровень критичности ошибки
 	 */
 	public level: string;
 
 	/**
-	 * Error stack
+	 * Стэк ошибки
 	 */
 	public stack!: string;
 
-	/**
-	 * Constructor
-	 */
 	public constructor({
 		err_code: code,
 		err_critical_lvl: level,
@@ -132,15 +133,12 @@ class DevUpError extends Error {
 		this.name = this.constructor.name;
 	}
 
-	/**
-	 * Returns custom tag
-	 */
 	public get [Symbol.toStringTag](): string {
 		return this.constructor.name;
 	}
 
 	/**
-	 * Returns property for json
+	 * Возвращает содержимое ошибки в JSON
 	 */
 	public toJSON(): Pick&lt;this, keyof this> {
 		const json = {} as Pick&lt;this, keyof this>;
