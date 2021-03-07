@@ -1,13 +1,37 @@
-const MODULE_VERSION = "1.3.5";
-const DEFAULT_API_URL = "https://api.dev-up.ru/method/";
+export const version = "1.3.5";
+export const url = "https://api.dev-up.ru/method/";
 
 type RequestParam = { key: string; value: number | string | boolean };
+
+class ModuleError extends Error {
+	constructor(message: string) {
+		super(message);
+		Object.setPrototypeOf(this, ModuleError.prototype);
+	}
+
+	protected get [Symbol.toStringTag](): string {
+		return this.constructor.name;
+	}
+
+	/**
+	 * Возвращает содержимое ошибки в JSON
+	 */
+	protected toJSON(): Pick<this, keyof this> {
+		const json = {} as Pick<this, keyof this>;
+
+		for (const key of Object.getOwnPropertyNames(this)) {
+			json[key as keyof this] = this[key as keyof this];
+		}
+
+		return json;
+	}
+}
 
 /**
  * Основной класс ошибок которые могут произойти в модуле
  * @hideconstructor
  */
-class DevUpError extends Error {
+export class DevUpError extends ModuleError {
 	/**
 	 * Код ошибки
 	 */
@@ -46,28 +70,16 @@ class DevUpError extends Error {
 		this.params = params;
 
 		this.name = this.constructor.name;
-	}
 
-	public get [Symbol.toStringTag](): string {
-		return this.constructor.name;
-	}
-
-	/**
-	 * Возвращает содержимое ошибки в JSON
-	 */
-	public toJSON(): Pick<this, keyof this> {
-		const json = {} as Pick<this, keyof this>;
-
-		for (const key of Object.getOwnPropertyNames(this)) {
-			json[key as keyof this] = this[key as keyof this];
-		}
-
-		return json;
+		Object.setPrototypeOf(this, DevUpError.prototype);
 	}
 }
 
-export default {
-	version: MODULE_VERSION,
-	url: DEFAULT_API_URL,
-	error: DevUpError,
-};
+export class DDOS_Guard extends ModuleError {
+	constructor() {
+		super(
+			"The number of requests per second has been exceeded, try again later",
+		);
+		Object.setPrototypeOf(this, DDOS_Guard.prototype);
+	}
+}
