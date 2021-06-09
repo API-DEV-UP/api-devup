@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { IOptions } from "./../../types";
-import Core from "../../core";
+import * as Core from "../../core";
 
 export class Builder {
 	protected readonly token: string;
@@ -28,20 +28,33 @@ export class Builder {
 		data?: Record<string, any>,
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	): Promise<any> {
-		try {
-			const Response = await axios.post(
-				this.apiURL + method,
-				{
-					key: this.token,
-					...data,
-				},
-				this.RequestConfig,
-			);
-			return Response.data;
-		} catch (error) {
-			console.log(error.response.data.err);
-			throw new Core.error(error.response.data.err);
-		}
+		return new Promise((resolve, reject) => {
+			axios
+				.post(
+					this.apiURL + method,
+					{
+						key: this.token,
+						...data,
+					},
+					this.RequestConfig,
+				)
+				.then((response) => {
+					if (response.data.err) {
+						reject(new Core.DevUpError(response.data.err));
+					}
+					resolve(response.data);
+				})
+				.catch((err) => {
+					if (err.response?.headers?.server === "ddos-guard") {
+						reject(new Core.DDOS_Guard());
+					}
+					if (err.response?.data?.err) {
+						reject(new Core.DevUpError(err.response.data.err));
+					} else {
+						reject(err);
+					}
+				});
+		});
 	}
 
 	// protected async request(data, params: Record<string, any>)

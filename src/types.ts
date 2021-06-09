@@ -36,7 +36,3 @@ export interface PingResponse {
 export type API_Response<MethodResponse> = Promise<{
 	response: MethodResponse;
 }>;
-
-export interface ICustomRequest {
-	method: string;
-}
