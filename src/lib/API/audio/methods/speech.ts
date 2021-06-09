@@ -7,4 +7,4 @@ export interface Response {
 	text: string;
 }
 
-export const method = "profile.get";
+export const method = "audio.speech";
