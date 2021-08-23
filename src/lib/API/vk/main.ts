@@ -7,6 +7,7 @@ import * as getStickerInfo from "./methods/getStickerInfo";
 import * as getGroups from "./methods/getGroups";
 import * as getApps from "./methods/getApps";
 import * as searchPlaylists from "./methods/searchPlaylists";
+import * as searchAudio from "./methods/searchAudio";
 
 export default class VK extends Builder {
 	constructor(params: IOptions | string) {
@@ -39,4 +40,9 @@ export default class VK extends Builder {
 		params: searchPlaylists.Params,
 	): API_Response<searchPlaylists.Response> =>
 		this.postRequest(searchPlaylists.method, params);
+
+	public searchAudio = async (
+		params: searchAudio.Params,
+	): API_Response<searchAudio.Response> =>
+		this.postRequest(searchAudio.method, params);
 }
