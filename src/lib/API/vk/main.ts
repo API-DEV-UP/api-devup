@@ -6,6 +6,7 @@ import * as getStickers from "./methods/getStickers";
 import * as getStickerInfo from "./methods/getStickerInfo";
 import * as getGroups from "./methods/getGroups";
 import * as getApps from "./methods/getApps";
+import * as searchPlaylists from "./methods/searchPlaylists";
 
 export default class VK extends Builder {
 	constructor(params: IOptions | string) {
@@ -33,4 +34,9 @@ export default class VK extends Builder {
 	public getApps = async (
 		params: getApps.Params,
 	): API_Response<getApps.Response> => this.postRequest(getApps.method, params);
+
+	public searchPlaylists = async (
+		params: searchPlaylists.Params,
+	): API_Response<searchPlaylists.Response> =>
+		this.postRequest(searchPlaylists.method, params);
 }
